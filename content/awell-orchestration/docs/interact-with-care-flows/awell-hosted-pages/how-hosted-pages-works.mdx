@@ -56,3 +56,19 @@ Activities like API call actions and calculations, which don't need user interve
 When you choose this option, you're responsible for not only building the interface but also maintaining it. If you choose this route, you'll need to find the right developer, engineer and design resources to create the interfaces, update it and keep it functioning.
 
 The beauty of Awell Hosted Pages is how they neutralise this pressure but still allow a high degree of customisation. **We are committed to maintaining and evolving Hosted Pages so you don't have to build it.**
+
+## FAQ
+
+**How are you auditing access to data without an authentication context?**<br/>
+In Hosted Pages, there's no authenticated context. Instead, access is managed within a “session” scoped to specific roles, such as “patient” or “clinician.” This approach allows for role-based access, but no individual user context is logged within this session, meaning there is currently no auditing available at the user level.
+
+**How do you prevent anyone with a valid link access to patient data or patient data outside of their scope of service?**<br/>
+There are a combination of elements to consider:
+
+1. <span className='font-bold'>Limited Data Exposure</span>:<br/>
+We recommend not exposing sensitive PHI/PII data within Hosted Pages. The app is designed as a lightweight, low-setup application that enables users to complete activities in care flows without requiring a full authentication setup.
+2. <span className='font-bold'>Short-Lived Sessions</span>:<br/>
+Sessions in Hosted Pages are short-lived, expiring after one hour. For most integrations, a session must be created via our API, which requires authentication.
+3. <span className='font-bold'>Contextual Guardrails</span>:<br/> Depending on your use case and integration setup, the session link can be generated within an authenticated context (e.g. inside your EHR), providing an implicit layer of access control. However, if a link were to be leaked, anyone with access could potentially view it for up to one hour.
+4. <span className='font-bold'>Embedded in Authenticated Apps</span>:<br/> Many customers use an embedded version of Hosted Pages within their own authenticated applications.
+5. <span className='font-bold'>Additional Verification Measures</span>:<br/> We also started supporting optional verification steps, such as date-of-birth (DOB) verification. Before accessing Hosted Pages, users are prompted to enter a specific piece or combination of personal data about the patient, like DOB, before they can access the Hosted Pages session.
