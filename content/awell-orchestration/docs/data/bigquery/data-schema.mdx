@@ -93,6 +93,41 @@ Table name: `activities`.
 
 <ActivityTableSpecs />
 
+
+<Alert type="info">
+  <p className="mb-1">Following tables extract specific objects from the activities table, allowing for easier and more detailed analytics:</p>
+  <ul>
+    <li>Actions</li>
+    <li>Steps</li>
+    <li>Tracks</li>
+  </ul>
+</Alert>
+
+
+
+
+#### Actions
+Table name: `actions`.
+
+The `actions` table captures data about orchestrated actions within care flows. It consolidates information including action definition ID and type, final state of the action, primary object details (e.g., form name), associations with care flows, steps, and tracks, and timing information.
+<ActionsTableSpecs />
+
+
+#### Steps
+Table name: `steps`.
+
+The `steps` table captures data about orchestrated steps within care flows. It contains information about each step's definition ID, start and completion times, current status, and its associations with care flows and tracks. This table allows for detailed analysis of step execution and progression within care flows.
+
+<StepsTableSpecs />
+
+
+#### Tracks
+Table name: `tracks`.
+
+The `tracks` table captures data about orchestrated tracks within care flows. It includes information about each track's definition ID, start and completion times, current status, and its association with the care flow it's a part of. This table enables analysis of track progression and helps in understanding the structure and execution of care flows at a higher level.
+
+<TracksTableSpecs />
+
 ### Patient data
 
 #### Patients
@@ -106,3 +141,4 @@ Table name: `patients`
 Table name: `patient_profiles`
 
 <PatientProfileTableSpecs />
+

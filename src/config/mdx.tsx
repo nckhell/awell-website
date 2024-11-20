@@ -3,6 +3,7 @@ import rehypeSlug from 'rehype-slug'
 import { Alert } from '@/components/Alert'
 import { CodeTabs } from '@/components/CodeTabs'
 import {
+  ActionsTableSpecs,
   ActivityIndexSpecs,
   ActivityTableSpecs,
   CareFlowTableSpecs,
@@ -13,6 +14,8 @@ import {
   PatientProfileTableSpecs,
   PatientTableSpecs,
   StepIndexSpecs,
+  StepsTableSpecs,
+  TracksTableSpecs
 } from '@/components/DataRepository'
 import { Code, CustomH2, CustomH3 } from '@/components/Docs/atoms'
 import { FAQ } from '@/components/FAQ'
@@ -63,4 +66,7 @@ export const mdxComponents = {
   ActivityIndexSpecs,
   CodeTabs,
   Properties,
+  ActionsTableSpecs,
+  StepsTableSpecs,
+  TracksTableSpecs,
 }

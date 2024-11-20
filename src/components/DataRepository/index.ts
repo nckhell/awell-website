@@ -1,3 +1,4 @@
+export * from './ActionsTableSpecs'
 export * from './ActivityIndexSpecs'
 export * from './ActivityTableSpecs'
 export * from './CareFlowTableSpecs'
@@ -8,4 +9,6 @@ export * from './PathwayIndexSpecs'
 export * from './PatientProfileTableSpecs'
 export * from './PatientTableSpecs'
 export * from './StepIndexSpecs'
+export * from './StepsTableSpecs'
+export * from './TracksTableSpecs'
 
