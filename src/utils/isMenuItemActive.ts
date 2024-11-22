@@ -1,3 +1,5 @@
+import { isNil } from "lodash"
+
 export const isMenuItemActive = (
   menuItemPath: string,
   pathName: string,
@@ -15,11 +17,11 @@ export const isMenuItemActive = (
   /**
    * Returns 'welcome' if path is 'docs/getting-started/welcome'
    */
-  const lastUrlParam = menuItemPath.split('/').splice(-1)[0]
+  const [parentSegment, childSegment] = menuItemPath.split('/').splice(-2)
 
   if (Array.isArray(slug)) {
-    return slug.includes(lastUrlParam)
+    return (!isNil(parentSegment) && slug.includes(parentSegment)) && slug.includes(childSegment)
   }
 
-  return slug.includes(lastUrlParam)
+  return slug.includes(childSegment)
 }

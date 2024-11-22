@@ -1,0 +1,26 @@
+---
+title: Care flow data
+description: How is a care flow modeled in the Awell Ontology ?
+---
+
+Our system uses the **CarePlan** and **PlanDefinition** resources to model care flows, based on the FHIR standard:
+- **PlanDefinition**: A care flow that you design in Awell Studio. See [Awell Studio](/awell-studio/docs/getting-started/studio-introduction) for more information on how to design care flows.
+- **CarePlan**: A care flow that has been started for a specific patient using the Awell Orchestration platform. See [Awell Orchestration](/awell-orchestration/docs/getting-started/orchestration-introduction) for more information on how to orchestrate care flows.
+
+
+The diagram below shows how these resources relates to one another.
+
+<figure className="flex flex-col justify-center text-center">
+  <a
+    href="/images/care-flow-data-diagram.png"
+    target="_blank"
+    className="custom-link"
+  >
+    <img
+      src="/images/care-flow-data-diagram.png"
+      alt="Care flow data diagram"
+      className="w-1/4 mx-auto"
+    />
+  </a>
+  <figcaption className="dark:text-slate-400 pt-1">Care flow data diagram</figcaption>
+</figure>

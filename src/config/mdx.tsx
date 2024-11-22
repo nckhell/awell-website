@@ -26,6 +26,8 @@ import { UseCasesComparisonTable } from '@/components/UseCasesComparisonTable'
 import { Effort } from '@/components/UseCasesComparisonTable/atoms'
 import { WebhooksList } from '@/components/Webhooks'
 
+import { ObservationDefinitionResourceTable, ObservationResourceTable, PatientResourceTable, QuestionnaireResourceTable, QuestionnaireResponseResourceTable } from '../components/OntologyResource'
+
 export const mdxOptions = {
   mdxOptions: {
     rehypePlugins: [
@@ -63,4 +65,9 @@ export const mdxComponents = {
   ActivityIndexSpecs,
   CodeTabs,
   Properties,
+  ObservationDefinitionResourceTable,
+  ObservationResourceTable,
+  PatientResourceTable,
+  QuestionnaireResourceTable,
+  QuestionnaireResponseResourceTable
 }

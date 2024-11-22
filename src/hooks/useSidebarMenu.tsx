@@ -21,6 +21,8 @@ import {
 } from '@/types/menu.types'
 import { Space } from '@/types/space.types'
 
+import { ontologyDocsMenu } from '../config/menus/awell-ontology'
+
 interface useSidebarMenuHook {
   menu: MenuType
   isChildActive: (menu: LevelOneMenuType | LevelTwoMenuType) => boolean
@@ -60,6 +62,12 @@ export const useSidebarMenu = (): useSidebarMenuHook => {
     } else if (router.asPath.includes(Space.AWELL_STUDIO)) {
       if (router.asPath.includes('docs')) {
         setMenu(studioDocsMenu)
+      } else {
+        setMenu([])
+      }
+    } else if (router.asPath.includes(Space.AWELL_ONTOLOGY)) {
+      if (router.asPath.includes('docs')) {
+        setMenu(ontologyDocsMenu)
       } else {
         setMenu([])
       }

@@ -1,0 +1,37 @@
+---
+title: Design vs Orchestration
+description: What resources are known at design time vs. orchestration time ?
+---
+
+When you design care flows, you define templates that describe all possible paths a care flow could take. It's only during orchestration that all the relevant data becomes known, enabling dynamic adaptation to a patient's specific circumstances.
+
+## Design Time Data
+
+At design time, you have a comprehensive overview of patient demographics data and diagnostics data that *may* be collected during the care flow. This includes but is not limited to:
+
+- **Patient demographics data**: Demographics and administrative details such as name, age, gender, etc.
+- **Diagnostics data**: Potential responses to questionnaires and clinical scores to be computed.
+
+In a depression screener care flow for example, you know that an intake questionnaire will be completed and a PHQ-9 score will be computed. However, you don't know the actual responses or the PHQ-9 score until a specific patient goes through the care flow.
+
+Complex care flows can have conditional logic and dynamic content, making it difficult to track which data will be available. For instance, a care flow might use gender to determine whether to administer a PHQ-2 or a PHQ-9 assessment. At design time, you know that either score might be computed, but you won't know which until you know the patient's gender.
+
+## Orchestration Time Data
+
+At orchestration time, you have complete and specific information about the patient, including:
+
+- **Patient demographics and administrative data**: Name, age, gender, etc.
+- **Responses to questionnaires**: Submitted by the patient and care team.
+- **Computed clinical scores**: Based on the responses provided.
+
+During orchestration, the care flow evaluates conditional logic and selects relevant paths, progressively refining the treatment plan. Essentially, the care flow starts as a plan with many possible paths (a tree with branches) and narrows down to a specific path as decisions are made.
+
+## Practical Implications
+
+Understanding the distinction between design time and orchestration time data is crucial for effective care flow design.
+
+Consider the following scenario for example:
+
+> A care flow designer reviews patient feedback and decides to change the depression screener to avoid requiring women with no signs of depression to fill out the lengthy PHQ-9 assessment. They plan to use the PHQ-2 score to determine if the PHQ-9 assessment is necessary. However, they miss that the PHQ-2 score is only computed for male patients, so their change doesn't impact female patients as intended.
+
+By understanding the distinction between design time and orchestration time data, you can avoid such mistakes, ensuring that changes to care flows are effective and improve the patient experience.

@@ -4,6 +4,10 @@ import { rootRoutes } from '../config/routes'
 
 export const spaces: { label: string; path: string; active?: boolean }[] = [
   {
+    label: 'Awell Ontology',
+    path: rootRoutes[Space.AWELL_ONTOLOGY].docs,
+  },
+  {
     label: 'Awell Studio',
     path: rootRoutes[Space.AWELL_STUDIO].docs,
   },

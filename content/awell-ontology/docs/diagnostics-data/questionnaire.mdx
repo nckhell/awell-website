@@ -1,0 +1,23 @@
+---
+title: Questionnaire
+description: How are questionnaires captured and how to use them in care flows ?
+---
+
+## How can I collect questionnaire responses from a care flow ?
+
+To collect questionnaire responses, add a form action to your care flow. This generates an equivalent Questionnaire resource with properties like title, name, and code that have semantic meaning. The items within the questionnaire represent the questions, each with its own text and code.
+
+## How can I drive care flow logic with questionnaire response data ?
+
+Questionnaire responses can be used to drive care flow logic. For example, if a patient indicates in a questionnaire that they want a consultation with a specialist, you can configure the care flow to schedule an appointment. This ensures that patient preferences and needs are integrated into the care flow dynamically.
+
+
+## Properties
+
+### Questionnaire
+
+<QuestionnaireResourceTable />
+
+### QuestionnaireResponse
+
+<QuestionnaireResponseResourceTable />

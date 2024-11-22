@@ -1,5 +1,5 @@
 import { type QuickNavType } from '../types/menu.types'
-import { useMenus } from './useMenus'
+import { FlattenedMenuType, useMenus } from './useMenus'
 
 export const useQuickNavigation = (currentPageSlug: string): QuickNavType => {
   const { menus } = useMenus()
@@ -7,6 +7,16 @@ export const useQuickNavigation = (currentPageSlug: string): QuickNavType => {
   const indexCurrentPage = menus.findIndex((menuItem) => {
     return menuItem.path ? menuItem.path.includes(currentPageSlug) : -1
   })
+  const currentPage = menus.find((menuItem) => {
+    return menuItem.path ? menuItem.path.includes(currentPageSlug) : -1
+  })
+
+  const generateLabel = (item: FlattenedMenuType): string => {
+    if (currentPage?.parentTitle === item.parentTitle) {
+      return item.title
+    }
+    return `${item.parentTitle} - ${item.title}`
+  }
 
   if (indexCurrentPage === -1) return { prev: undefined, next: undefined }
 
@@ -15,12 +25,12 @@ export const useQuickNavigation = (currentPageSlug: string): QuickNavType => {
 
   return {
     prev: prevItem && {
-      label: prevItem.title,
-      url: prevItem?.path || '',
+      label: generateLabel(prevItem),
+      url: prevItem.path || '',
     },
     next: nextItem && {
-      label: nextItem.title,
-      url: nextItem?.path || '',
+      label: generateLabel(nextItem),
+      url: nextItem.path || '',
     },
   }
 }

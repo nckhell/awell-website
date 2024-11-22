@@ -1,0 +1,66 @@
+---
+title: Introduction
+description: What is the Awell Ontology?
+---
+
+An ontology enables the classification and organization of information. For Awell specifically, it defines the various components and relationships within the healthcare ecosystem. **It serves as a comprehensive semantic and operational layer that overlays your data.**
+
+It can be helpful to think about data in the Awell platform living in two places: **the data layer and the Ontology layer**.
+
+## Data layer
+
+In the data layer, data is stored inside datasets, which typically represent tabular data like you might find in a spreadsheet or database. At this stage, especially external data, is very heterogeneous and not normalised.
+
+Datasets typically originate from two main sources:
+
+1. **Internally-produced**: data produced by the Awell platform as care flows get designed and orchestrated
+1. **Externally-produced**: your organizational data sources that are synced into the Awell platform and data from 3rd party providers
+
+## Ontology layer
+
+In the ontology layer, data is stored in Resources & References representing real-world concepts like a patient, observation, or encounter, while References represent the relationships between the Resources. 
+
+The Ontology layer transforms the raw data from tabular datasets—structured as rows and columns—into a set of comprehensible concepts that can be easily understood by anyone within the organization.
+
+**The data serves as input for the Ontology, while the Ontology itself functions as the operational layer for your organization.** Creating an Ontology from raw data typically involves establishing data pipelines to produce normalized and curated datasets, which are then structured into the Ontology.
+
+### Ontology at Awell
+
+Awell enables you to design and operate care flows with ease, integrating data from various systems effortlessly. The Awell Ontology serves as a comprehensive documentation, detailing all the resources you will use in your care flow design journey, their properties, and how they interconnect.
+
+<figure className="flex flex-col justify-center text-center">
+  <a
+    href="/images/ontology-diagram.png"
+    target="_blank"
+    className="custom-link"
+  >
+    <img
+      src="/images/ontology-diagram.png"
+      alt="Ontology diagram"
+      className="w-full mx-auto"
+    />
+  </a>
+  <figcaption className="dark:text-slate-400 pt-1">Awell Ontology diagram</figcaption>
+</figure>
+
+### FHIR
+
+Our ontology is based on the [FHIR framework](https://hl7.org/fhir/) as this is a widely-recognize standard in the healthcare industry. It facilitates data exchange between healthcare systems, ensuring interoperability and ease of integration.
+
+#### Benefits
+
+**There are two key benefits:**
+
+1. It simplifies the data exchange between systems
+2. It helps translate clinical concepts into actionable care flow components
+
+Imagine being able to use something like this to not just identify patient cohorts but also to use as a basis for designing and operating care flows:
+
+> From the ADT feeds received in the last 3 days, start a follow-up care flow for every person taking sitagliptin with an A1C above 6.5 measured in the last 14 days even if they've never been diagnosed with diabetes.
+
+This illustrates the power of the FHIR based ontology
+- Messages from an ADT feed can easily be converted into data that can be used in care flows.
+- Clinical concepts are translated into actionable care flow components:
+  - A1C level is an **Observation** (already available in the Awell Ontology).
+  - Sitagliptin is a medication (soon to be added as **MedicationRequest** and **MedicationDispense** resources in the Awell Ontology).
+  - Diabetes is a **Diagnosis** (soon to be added in the Awell Ontology).

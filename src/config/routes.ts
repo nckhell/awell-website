@@ -8,6 +8,12 @@ type Routes = {
 }
 
 export const rootRoutes: Record<Space, Routes> = {
+  [Space.AWELL_ONTOLOGY]: {
+    home: `/${Space.AWELL_ONTOLOGY}/docs/getting-started/overview`,
+    docs: `/${Space.AWELL_ONTOLOGY}/docs/getting-started/overview`,
+    api: '#',
+    developerTools: '#',
+  },
   [Space.AWELL_STUDIO]: {
     home: `/${Space.AWELL_STUDIO}`,
     docs: `/${Space.AWELL_STUDIO}/docs/getting-started/studio-introduction`,

@@ -30,12 +30,11 @@ export interface LevelOneMenuType extends BaseType {
 export type MenuType = LevelOneMenuType[]
 
 export type QuickNavType = {
-  prev?: {
-    label: string
-    url: string
-  }
-  next?: {
-    label: string
-    url: string
-  }
+  prev?: QuickNavItemType
+  next?: QuickNavItemType
+}
+
+export type QuickNavItemType = {
+  label: string
+  url: string
 }

@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import {
   defaultNavigation,
   extensionsNavigation,
+  ontologyNavigation,
   orchestrationNavigation,
   scoreNavigation,
   studioNavigation,
@@ -48,7 +49,9 @@ export const Header = () => {
     useContext(AppContext)
 
   useEffect(() => {
-    if (space === Space.AWELL_ORCHESTRATION) {
+    if (space === Space.AWELL_ONTOLOGY) {
+      setNavigation(ontologyNavigation)
+    } else if (space === Space.AWELL_ORCHESTRATION) {
       setNavigation(orchestrationNavigation)
     } else if (space === Space.AWELL_SCORE) {
       setNavigation(scoreNavigation)

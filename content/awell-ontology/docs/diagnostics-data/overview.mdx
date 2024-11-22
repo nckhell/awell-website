@@ -1,0 +1,26 @@
+---
+title: Diagnostics data
+description: What diagnostics data is available in Awell ?
+---
+
+Our system uses the following resources to capture diagnostic data, based on the FHIR standard:
+
+- **ObservationDefinition** and **Observation**: Captures clinical scores or any other measurements made about a patient.
+- **Questionnaire** and **QuestionnaireResponse**: Captures forms assigned to stakeholders in the care flow and their responses.
+
+The diagram below shows how these resources relate to one another as well as their relationship to the care flow parent resource.
+
+<figure className="flex flex-col justify-center text-center">
+  <a
+    href="/images/diagnostics-data-diagram.png"
+    target="_blank"
+    className="custom-link"
+  >
+    <img
+      src="/images/diagnostics-data-diagram.png"
+      alt="Diagnostics data diagram"
+      className="w-full mx-auto"
+    />
+  </a>
+  <figcaption className="dark:text-slate-400 pt-1">Diagnostics data diagram</figcaption>
+</figure>

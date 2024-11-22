@@ -1,0 +1,187 @@
+---
+title: Core concepts
+description: What makes an Ontology ?
+---
+
+This page describes the major concepts related to the Ontology in Awell.
+
+## Resource type
+
+A Resource type is the schema definition of a real-world entity, event, or functional intent. In FHIR, there are [more than 150 resource types](https://build.fhir.org/resourcelist.html) available to classify healthcare data.
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: '200px' }}>Ontology</th>
+      <th style={{ width: '250px' }}>Example 1</th>
+      <th>Example 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>Resource type</strong>
+      </td>
+      <td>Patient</td>
+      <td>Observation</td>
+    </tr>
+  </tbody>
+</table>
+
+## Resource
+
+A Resource refers to a single instance of a Resource type and thus corresponds to a single real-world entity, event, or functional intent.
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: '200px' }}>Ontology</th>
+      <th style={{ width: '250px' }}>Example 1</th>
+      <th>Example 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>Resource type</strong>
+      </td>
+      <td>Patient</td>
+      <td>Observation</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Resource</strong>
+      </td>
+      <td>John Doe's patient record</td>
+      <td>Hemoglobin measurement</td>
+    </tr>
+  </tbody>
+</table>
+
+## Property and Property value
+
+A property defines a specific characteristic of a Resource. It has a name which defines what that characteristic represents, and a value which defines what that characteristic is.
+
+> **Note**: in FHIR, properties are called Elements.
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: '200px' }}>Ontology</th>
+      <th style={{ width: '250px' }}>Example 1</th>
+      <th>Example 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <strong>Resource type</strong>
+      </td>
+      <td>Patient</td>
+      <td>Observation</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Resource</strong>
+      </td>
+      <td>John Doe's patient record</td>
+      <td>Hemoglobin measurement</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Property (name)</strong>
+      </td>
+      <td>birthDate</td>
+      <td>valueQuantity.value</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Property value</strong>
+      </td>
+      <td>1993-11-30</td>
+      <td>7.2</td>
+    </tr>
+  </tbody>
+</table>
+
+### Semantic properties
+
+Some properties contain semantic information about a resource. This category of properties is referred to as a **Semantic Property** and is mostly frequently used when you want to search for data when designing care flows.
+
+Let's say for example that you are building a care flow related to depression and want to create treatment activities that are relevant only for patients that are likely to be depressed. When you search for the term `depression` we can find the **PHQ-9** Observation thanks to its `code` property as it contains information about what the observation measures (Loinc 44249-1: "PHQ-9 quick depression assessment panel").
+
+### Actionable properties
+
+Some properties contain values that can be used to drive the logic in a care flow or tailor its content. This category of properties is referred to as an **Actionable Property**.
+
+Building up on the previous example, once you've identified that the **PHQ-9** observation has the information that you need, you can configure treatment activities that will only be activated when the observation `value` (Actionable Property of an Observation) is higher greater or equal to 10, which indicates a moderate or higher level of depression.
+
+## Reference
+
+**A Reference defines the relationship (or join) between two resources.** Many of the defined properties in a Resource are references to other resources. Using these references, the resources combine to build a web of information about healthcare.
+
+For example, the FHIR resource type Condition has a subject field of Reference type, which can be used to link to a Patient resource as the subject of the condition.
+
+<figure className="w-full flex flex-col justify-center text-center pt-4">
+  <a
+    href="https://fhirblog.com/wp-content/uploads/2014/03/fhir_condition.png"
+    target="_blank"
+    className="custom-link"
+  >
+    <img
+      src="https://fhirblog.com/wp-content/uploads/2014/03/fhir_condition.png"
+      alt="Pathway versioning"
+      className="w-full sm:w-8/12 mx-auto"
+    />
+  </a>
+  <figcaption className="dark:text-slate-400 pt-1">
+    References between Resources
+  </figcaption>
+</figure>
+
+## Data store
+
+**The collection of Resource types and Resources that describes all the healthcare data available in your account (the data layer).** This evolves with the care flows that you build and the systems that you connect to Awell.
+
+The structure of data storage can be reverse-engineered into the Ontology. This mapping can help in visualizing the correlation between the raw data and the Ontology framework, aiding in the understanding of data relationships and structure.
+
+<table>
+  <thead>
+    <tr>
+      <th style={{ width: '250px' }}>Data store (relational)</th>
+      <th style={{ width: '250px' }}>Data store (NoSQL)</th>
+      <th>Ontology</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Table</td>
+      <td>Collection</td>
+      <td>Resource type</td>
+    </tr>
+    <tr>
+      <td>Row</td>
+      <td>Document</td>
+      <td>Resource</td>
+    </tr>
+    <tr>
+      <td>Column</td>
+      <td>Field</td>
+      <td>Property</td>
+    </tr>
+    <tr>
+      <td>Field</td>
+      <td>Value</td>
+      <td>Property value</td>
+    </tr>
+    <tr>
+      <td>Join</td>
+      <td>Linking</td>
+      <td>Reference</td>
+    </tr>
+  </tbody>
+</table>
+
+## Data lineage
+
+A visualisation that shows where the data comes from for a given **Resource type** and/or **Resource**.

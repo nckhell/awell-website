@@ -1,0 +1,22 @@
+---
+title: Observation
+description: How are observations captured and how to use them in care flows ?
+---
+
+## How can I collect observations from a care flow ?
+
+In your care flow, you can collect observations by adding a calculation action. Each action generates an ObservationDefinition resource. If multiple observation definitions have the same code, they are merged together. For example, you might add a PHQ-9 score calculation to monitor a patient’s mental health.
+
+## How can I drive care flow logic with observation data ?
+
+Observations are key to driving conditional logic within care flows. For example, you can configure your care flow to schedule a consultation with a psychologist if a patient’s PHQ-9 score is 15 or higher, indicating depression. This allows for dynamic adjustments based on real-time data.
+
+## Properties
+
+### Observation
+
+<ObservationResourceTable />
+
+### ObservationDefinition
+
+<ObservationDefinitionResourceTable />
