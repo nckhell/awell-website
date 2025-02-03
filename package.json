@@ -28,7 +28,7 @@
     "@markprompt/react": "^0.40.7",
     "@radix-ui/react-visually-hidden": "^1.0.3",
     "algoliasearch": "^4.23.3",
-    "axios": "^1.6.8",
+    "axios": "^1.7.4",
     "clsx": "^2.1.0",
     "dotenv": "^16.4.5",
     "glob": "^7.1.7",
